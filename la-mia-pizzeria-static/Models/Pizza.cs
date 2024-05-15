@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Xml.Linq;
 
 namespace la_mia_pizzeria_static.Models
 {
@@ -14,13 +15,19 @@ namespace la_mia_pizzeria_static.Models
         public string Image { get; set; }
         public double Price { get; set; }
 
-        public Pizzas() { }
-
         public Pizzas(string name, string description, string immage, double price)
         {
             Name = name;
             Description = description;
             Image = immage;
+            Price = price;
+        }
+        public Pizzas(int id, string name, string description, string image, double price)
+        {
+            Id = id;
+            Name = name;
+            Description = description;
+            Image = image;
             Price = price;
         }
     }
