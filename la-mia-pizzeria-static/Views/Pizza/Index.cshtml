@@ -1,0 +1,34 @@
+﻿
+@model List<Pizzas>
+<div class="container-lg text-center">
+    <h1 class="main-title mt-5">
+        Welcome to My
+        <span style="color: red;">Pizzeria</span>
+    </h1>
+    <p class="my-3 fs-4">
+        Today you can chose between our specialities
+    </p>
+    <div class="table-responsive mx-5 container-lg">
+        <table class="table table-striped">
+            <thead>
+                <tr class="fs-4">
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Image</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var pizza in Model)
+                {
+                    <tr class="fs-4" style="vertical-align: middle;">
+                        <td>@pizza.Name</td>
+                        <td>@pizza.Description</td>
+                        <td><img src=@Url.Content(pizza.Image) class="img-fluid" style="max-width: 200px;"></td>
+                        <td>@pizza.Price &euro;</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

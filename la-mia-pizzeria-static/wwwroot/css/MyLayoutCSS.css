@@ -26,7 +26,15 @@ header {
     right: 0;
     height: 100px;
     z-index: 1000;
-    background: linear-gradient(156deg, rgba(237,73,73,1) 0%, rgba(247,255,0,1) 82%);
+    background: linear-gradient(156deg, rgba(0,0,0,1) 50%, rgba(255,255,255,1) 100%);
+}
+
+.menus > li {
+    color: white;
+    text-shadow: black 0px 0px 10px;
+    text-transform: uppercase;
+    font-weight: bold;
+    cursor: pointer;
 }
 
 main {
@@ -46,14 +54,16 @@ main {
     .logo img {
         width: 80px;
         border-radius: 50%;
-        animation: rotateRight 10s linear infinite;
+        animation: rotateRight 30s linear infinite;
         filter: drop-shadow(0 0 0.75rem yellow);
     }
+
     .icon img {
         width: 80px;
-        animation: rotateLeft 2s linear infinite;
-        filter: drop-shadow(0 0 0.75rem crimson);
+        animation: rotateLeft 3s linear infinite;
+        filter: drop-shadow(0 0 0.75rem blue);
     }
+
 .my-container {
     height: 100%;
 }
@@ -79,6 +89,7 @@ main {
         transform: rotate(360deg);
     }
 }
+
 @keyframes rotateLeft {
     from {
         transform: rotate(360deg);
