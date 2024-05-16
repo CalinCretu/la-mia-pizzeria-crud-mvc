@@ -9,11 +9,15 @@ namespace la_mia_pizzeria_static.Models
     [Index(nameof(Id), IsUnique = true)]
     public class Pizzas
     {
-        [Key] public int Id { get; set; }
-        [StringLength(30, ErrorMessage ="Il nome deve avere massimo 30 caratteri")]
-        [Required(ErrorMessage ="Il nome è obbligatorio")]
+        [Key]
+        public int Id { get; set; }
+
+        [Required(ErrorMessage = "Il nome è obbligatorio")]
+        [StringLength(50, ErrorMessage = "Il nome non può superare i 50 caratteri")]
         public string Name { get; set; }
+
         [Required(ErrorMessage = "La descrizione è obbligatoria")]
+        [MinLength(5, ErrorMessage = "La descrizione deve contenere almeno 5 caratteri")]
         public string Description { get; set; }
         [Url(ErrorMessage = "Il campo immagine deve essere un URL valido")]
         public string? Image { get; set; }
