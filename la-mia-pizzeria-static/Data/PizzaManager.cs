@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using la_mia_pizzeria_static.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace la_mia_pizzeria_static.Data
 
@@ -18,8 +19,11 @@ namespace la_mia_pizzeria_static.Data
         }
         public static void ResetTable()
         {
-            using PizzasContext db = new PizzasContext();
-            db.Database.ExecuteSqlRaw("TRUNCATE TABLE [pizze]");
+            using (var db = new PizzasContext())
+            {
+                db.Pizzas.RemoveRange(db.Pizzas);
+                db.SaveChanges();
+            }
         }
         public static Pizzas VediPizza(int id)
         {

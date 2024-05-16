@@ -20,7 +20,6 @@
 
   <ItemGroup>
     <Compile Remove="Models\Class.cs" />
-    <Compile Remove="Models\Pizza.cs" />
     <Compile Remove="PizzasContext.cs" />
     <Compile Remove="Views\Shared\_MyLayout.cshtml.cs" />
   </ItemGroup>

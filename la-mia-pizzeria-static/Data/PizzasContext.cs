@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using la_mia_pizzeria_static.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace la_mia_pizzeria_static.Data
 {
