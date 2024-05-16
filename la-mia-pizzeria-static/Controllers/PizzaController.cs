@@ -1,6 +1,7 @@
 ﻿using la_mia_pizzeria_static.Data;
 using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 using Pizzas = la_mia_pizzeria_static.Data.Pizzas;
 
 namespace la_mia_pizzeria_static.Controllers
@@ -46,14 +47,19 @@ namespace la_mia_pizzeria_static.Controllers
             {
                 return View("Create", data);
             }
-            using (PizzasContext context = new PizzasContext())
+            using (PizzasContext db = new PizzasContext())
             {
                 var pizzasToCreate = new Pizzas(data.Name, data.Description, data.Image, data.Price);
-                context.Pizzas.Add(pizzasToCreate);
-                context.SaveChanges();
+                db.Pizzas.Add(pizzasToCreate);
+                db.SaveChanges();
 
                 return RedirectToAction("Index");
             }
+        }
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

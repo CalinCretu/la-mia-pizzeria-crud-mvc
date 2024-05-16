@@ -12,7 +12,7 @@ namespace la_mia_pizzeria_static.Data
         [Key] public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
-        public string Image { get; set; }
+        public string? Image { get; set; }
         public double Price { get; set; }
 
         public Pizzas(string name, string description, string immage, double price)
@@ -30,5 +30,7 @@ namespace la_mia_pizzeria_static.Data
             Image = image;
             Price = price;
         }
+
+        public Pizzas() { }
     }
 }
