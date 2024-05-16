@@ -14,31 +14,35 @@
         <h2>
             Where Every Slice Tells a little Story
         </h2>
+    </div>
+    <div class="menu-title">
+        <h2>
+            Special Ones
+        </h2>
+    </div>
+    <div class="container">
+        @foreach (var pizza in Model)
+        {
+            <div class="pizza-card">
+                <div class="pizza-image">
+                    @if (!string.IsNullOrEmpty(pizza.Image))
+                    {
+                        <img src="@Url.Content(pizza.Image)" class="img-fluid" alt="@pizza.Name">
+                    }
+                    else
+                    {
+                        <img src="~/img/NoPizza.jpeg" class="img-fluid" alt="Default Image">
+                    }
+                </div>
+                <div class="pizza-details">
+                    <h2>@pizza.Name</h2>
+                    <p>@pizza.Description</p>
+                    <p>@pizza.Price &euro;</p>
+                    <button class="details-button"><a href="@Url.Action("VediPizza", "Pizza", pizza)">Dettagli</a></button>
+                </div>
 
+            </div>
+        }
     </div>
-    <div class="table-responsive mx-5 container-lg">
-        <table class="table table-striped">
-            <thead>
-                <tr class="fs-4">
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Image</th>
-                    <th>Price</th>
-                    <th><a href="@Url.Action("Create", "Pizza")">Aggiungi</a></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var pizza in Model)
-                {
-                    <tr class="fs-4" style="vertical-align: middle;">
-                        <td>@pizza.Name</td>
-                        <td>@pizza.Description</td>
-                        <td><img src=@Url.Content(pizza.Image) class="img-fluid" style="max-width: 200px;"></td>
-                        <td>@pizza.Price &euro;</td>
-                        <td><a href="@Url.Action("VediPizza", "Pizza", pizza)">Dettagli</a></td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
+
 </div>
