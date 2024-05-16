@@ -7,14 +7,9 @@ html {
     min-height: 100%;
 }
 
-ul, ol, li {
-    list-style: none;
-    padding: 0 !important;
-    margin: 0 !important;
-}
+
 
 body {
-    margin-bottom: 60px;
 }
 
 header {
@@ -30,12 +25,18 @@ header {
 }
 
 .menus > li {
+    font-size: 25px;
     color: white;
     text-shadow: black 0px 0px 10px;
     text-transform: uppercase;
     font-weight: bold;
     cursor: pointer;
 }
+
+    .menus > li:hover {
+        text-shadow: orange 0px 0px 10px;
+        transform: scale(1.1);
+    }
 
 main {
     margin-top: 100px;
@@ -54,22 +55,23 @@ main {
     .logo img {
         width: 80px;
         border-radius: 50%;
-        animation: rotateRight 30s linear infinite;
-        filter: drop-shadow(0 0 0.75rem yellow);
+/*        animation: rotateRight 30s linear infinite;*/
+        filter: drop-shadow(0 0 0.75rem orange);
     }
 
     .icon img {
         width: 80px;
         animation: rotateLeft 3s linear infinite;
-        filter: drop-shadow(0 0 0.75rem blue);
+        filter: drop-shadow(0 0 0.75rem orange);
+    }
+
+    .icon img:hover{
+        animation: rotateLeft 0.01s linear infinite;
+        cursor: help;
     }
 
 .my-container {
     height: 100%;
-}
-
-.main-title {
-    padding-top: 30px;
 }
 
 

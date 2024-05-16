@@ -4,14 +4,18 @@
 @{
     using la_mia_pizzeria_static.Data.PizzasContext db = new PizzasContext();
 }
-<div class="container-lg text-center">
-    <h1 class="main-title mt-5">
-        Welcome to My
-        <span style="color: red;">Pizzeria</span>
-    </h1>
-    <p class="my-3 fs-4">
-        Today you can chose between our specialities
-    </p>
+<link rel="stylesheet" href="~/css/Index.css" asp-append-version="true" />
+
+<div class="main text-center">
+    <div class="hero">
+        <h1>
+            Byte Me Pizzeria
+        </h1>
+        <h2>
+            Where Every Slice Tells a little Story
+        </h2>
+
+    </div>
     <div class="table-responsive mx-5 container-lg">
         <table class="table table-striped">
             <thead>

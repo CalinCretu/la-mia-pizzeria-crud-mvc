@@ -1,0 +1,27 @@
+﻿body {
+    
+}
+.hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-image: url("/img/HeroPizza.jpg");
+    background-size: cover;
+    height:50vh;
+    background-position: center;
+}
+    .hero > h1 {
+        font-size: 70px;
+        color: white;
+        filter: drop-shadow(0 0 0.9rem black);
+        margin: 80px 0px;
+        font-weight: bold;
+    }
+    .hero > h2 {
+        font-size: 50px;
+        color: white;
+        filter: drop-shadow(0 0 0.9rem black);
+        margin: 80px 0px;
+        font-weight: bold;
+    }
