@@ -1,5 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
+﻿@using la_mia_pizzeria_static.Data
+@model Pizzas
+
+<h1>La pizza più AI che puoi trovare in città</h1>
+<div>@Model.Name</div>
+<div>@Model.Description</div>
+<div><img src=@Url.Content(Model.Image) class="img-fluid" style="max-width: 200px;"></div>
+<div>@Model.Price &euro;</div>
+<div><a href="@Url.Action("Index", "Pizza")">Va de retro</a></div>

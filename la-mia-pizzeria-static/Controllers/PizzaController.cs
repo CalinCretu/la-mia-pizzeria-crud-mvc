@@ -15,13 +15,21 @@ namespace la_mia_pizzeria_static.Controllers
         }
         public IActionResult Index()
         {
+            //PizzaManager.ResetTable();
             return View(PizzaManager.GetAllPizzas());
         }
 
         public IActionResult VediPizza(int id)
         {
-            return View();
+            var pizza = PizzaManager.VediPizza(id);
+            if (pizza != null)
+            {
+                return View(pizza);
+            }
+            else
+            {
+                return View("errore");
+            }
         }
-
     }
 }

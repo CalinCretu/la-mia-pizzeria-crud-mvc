@@ -30,6 +30,7 @@
                         <td>@pizza.Description</td>
                         <td><img src=@Url.Content(pizza.Image) class="img-fluid" style="max-width: 200px;"></td>
                         <td>@pizza.Price &euro;</td>
+                        <td><a href="@Url.Action("VediPizza", "Pizza", pizza)">Dettagli</a></td>
                     </tr>
                 }
             </tbody>

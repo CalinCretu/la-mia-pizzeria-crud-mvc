@@ -1,3 +1,5 @@
+using la_mia_pizzeria_static.Data;
+
 namespace la_mia_pizzeria_static
 {
     public class Program
@@ -31,6 +33,7 @@ namespace la_mia_pizzeria_static
                 name: "default",
                 pattern: "{controller=Pizza}/{action=Index}/{id?}");
 
+            PizzaManager.Seed();
             app.Run();
         }
     }
