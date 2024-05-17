@@ -11,7 +11,7 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-image: url("/img/HeroPizza.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3)), url("/img/HeroPizza.jpg");
     background-size: cover;
     height: 50vh;
     background-position: center;
