@@ -1,4 +1,7 @@
-﻿.container {
+﻿main{
+    background-image: url(/img/Index_background.png)
+}
+.container {
     display: flex;
     justify-content: center;
     align-items: start;

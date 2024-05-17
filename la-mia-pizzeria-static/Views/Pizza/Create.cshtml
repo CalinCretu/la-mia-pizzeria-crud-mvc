@@ -1,31 +1,35 @@
 ﻿@using la_mia_pizzeria_static.Data
 @model Pizzas
 
-<div class="container d-flex justify-content-center align-items-start min-vh-100 mt-5">
-    <form asp-controller="Pizza" asp-action="Create" method="post" class="form-pizza bg-dark text-white p-4 rounded">
-        @Html.AntiForgeryToken()
-        <div class="mb-3">
-            <label asp-for="Name" class="form-label"><strong>Nome:</strong></label>
-            <input asp-for="Name" class="form-control" />
-            <span asp-validation-for="Name" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Description" class="form-label"><strong>Descrizione:</strong></label>
-            <input asp-for="Description" class="form-control" />
-            <span asp-validation-for="Description" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Image" class="form-label"><strong>Foto (Superflua):</strong></label>
-            <input asp-for="Image" class="form-control" />
-            <span asp-validation-for="Image" class="text-danger"></span>
-        </div>
-        <div class="mb-3">
-            <label asp-for="Price" class="form-label"><strong>Prezzo:</strong></label>
-            <input asp-for="Price" class="form-control" />
-            <span asp-validation-for="Price" class="text-danger"></span>
-        </div>
-        <div class="text-end">
-            <input type="submit" class="show-button" value="Crea">
-        </div>
-    </form>
+<link rel="stylesheet" href="~/css/Create.css" asp-append-version="true" />
+
+<div class="main">
+    <div class="container d-flex justify-content-center align-items-start min-vh-100 mt-5">
+        <form asp-controller="Pizza" asp-action="Create" method="post" class="form-pizza bg-dark text-white p-4 rounded">
+            @Html.AntiForgeryToken()
+            <div class="mb-3">
+                <label asp-for="Name" class="form-label"><strong>Nome:</strong></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Description" class="form-label"><strong>Descrizione:</strong></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Image" class="form-label"><strong>Foto (Superflua):</strong></label>
+                <input asp-for="Image" class="form-control" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="Price" class="form-label"><strong>Prezzo:</strong></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="text-end">
+                <input type="submit" class="show-button" value="Crea">
+            </div>
+        </form>
+    </div>
 </div>

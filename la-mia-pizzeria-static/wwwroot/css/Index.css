@@ -2,7 +2,7 @@
 }
 
 .main {
-    background-color: black;
+    background-image: url(/img/Index_background.png);
     color: white;
 }
 
@@ -37,6 +37,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    background-image: url(/img/Index_background.png);
     gap: 80px;
     max-width: 950px;
 }

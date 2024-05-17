@@ -38,7 +38,8 @@
                     <h2>@pizza.Name</h2>
                     <p>@pizza.Description</p>
                     <p class="price">@pizza.Price &euro;</p>
-                    <a href="@Url.Action("VediPizza", "Pizza", pizza)"><button class="details-button">Dettagli</button></a>
+                    <a href="@Url.Action("VediPizza", "Pizza", new{id = pizza.Id})"><button class="details-button">Dettagli</button></a>
+                    <a href="@Url.Action("Update", "Pizza", new{id = pizza.Id})"><button class="details-button">Modifica</button></a>
                 </div>
 
             </div>

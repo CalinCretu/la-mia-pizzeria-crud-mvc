@@ -1,4 +1,5 @@
-﻿using la_mia_pizzeria_static.Models;
+﻿using la_mia_pizzeria_static.Migrations;
+using la_mia_pizzeria_static.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace la_mia_pizzeria_static.Data
@@ -35,6 +36,22 @@ namespace la_mia_pizzeria_static.Data
             using PizzasContext db = new PizzasContext();
             db.Pizzas.Add(pizza);
             db.SaveChanges();
+        }
+        public static bool UpdatePizza(int id, string name, string description, double price)
+        {
+            using PizzasContext db = new PizzasContext();
+            var pizza = db.Pizzas.FirstOrDefault(p => p.Id == id);
+
+            if (pizza == null)
+                return false;
+
+            pizza.Name = name;
+            pizza.Description = description;
+            pizza.Price = price;
+
+            db.SaveChanges();
+
+            return true;
         }
         public static void Seed()
         {
