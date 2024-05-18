@@ -6,7 +6,6 @@
 
 <div class="bg-dark text-white">
     <div class="container d-flex justify-content-center align-items-center flex-column min-vh-100">
-        <h1 class="show-title">La pizza più AI che puoi trovare in città</h1>
         <div class="card show-pizza-card">
             <div class="card-body text-center">
                 <div class="card-text">
@@ -20,9 +19,8 @@
                     {
                         <img src="~/img/NoPizza.jpeg" class="img-fluid show-pizza-image" alt="Default Image">
                     }
-                    
                     <p class="h41">@Model.Price &euro;</p>
-                    <a href="@Url.Action("Index", "Pizza")"><button class="show-button">Torna alla Home</button></a>
+                    <a href="@Url.Action("Index", "Pizza")"><button class="show-button">Back</button></a>
                 </div>
             </div>
         </div>

@@ -38,12 +38,18 @@
                     <h2>@pizza.Name</h2>
                     <p>@pizza.Description</p>
                     <p class="price">@pizza.Price &euro;</p>
-                    <a href="@Url.Action("VediPizza", "Pizza", new{id = pizza.Id})"><button class="details-button">Dettagli</button></a>
-                    <a href="@Url.Action("Update", "Pizza", new{id = pizza.Id})"><button class="details-button">Modifica</button></a>
+                    <a href="@Url.Action("VediPizza", "Pizza", new{id = pizza.Id})"><button class="details-button">Details</button></a>
+                    <a href="@Url.Action("Update", "Pizza", new{id = pizza.Id})"><button class="details-button">Edit</button></a>
+                    <a>
+                        <form asp-controller="Pizza" asp-action="Delete" asp-route-id="@pizza.Id" method="post">
+                            @Html.AntiForgeryToken()
+                            <button type="submit" class="delete-button">
+                                DELETE
+                            </button>
+                        </form>
+                    </a>
                 </div>
-
             </div>
         }
     </div>
-
 </div>

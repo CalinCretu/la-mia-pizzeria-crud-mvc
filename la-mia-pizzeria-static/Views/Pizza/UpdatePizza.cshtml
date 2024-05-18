@@ -3,10 +3,15 @@
 <link rel="stylesheet" href="~/css/Create.css" asp-append-version="true" /> 
 
 <div class="main">
+    
+
     <div class="container d-flex justify-content-center align-items-start min-vh-100 mt-5">
+
         <form asp-controller="Pizza" asp-acion="Update" asp-route-id="@Model.Id" method="post" class="form-pizza bg-dark text-white p-4 rounded">
-            >
             @Html.AntiForgeryToken()
+            <div class="text-center">
+                <h2>Edit Pizza</h2>
+            </div>
             <div class="mb-3">
                 <strong>Nome:</strong>
                 <input asp-for="Name" class="d-block w-100" />
@@ -23,7 +28,7 @@
                 <span asp-validation-for="Price" class="text-danger"></span>
             </div>
             <div class="text-end">
-                <input type="submit" class="btn btn-small btn-success" value="Salva" />
+                <input type="submit" class="show-button" value="Save" />
             </div>
         </form>
     </div>
