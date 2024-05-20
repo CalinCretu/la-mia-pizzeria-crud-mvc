@@ -18,6 +18,12 @@ namespace la_mia_pizzeria_static.Data
             using PizzasContext db = new PizzasContext();
             return db.Pizzas.ToList();
         }
+
+        public static List<Category> GetAllCategories()
+        {
+            using PizzasContext db = new PizzasContext();
+            return db.Categories.ToList();
+        }
         public static void ResetTable()
         {
             using (var db = new PizzasContext())
