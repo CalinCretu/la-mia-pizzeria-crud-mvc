@@ -45,5 +45,15 @@ namespace la_mia_pizzeria_static.Models
         }
 
         public Pizzas() { }
+
+        public string GetDisplayedCategory()
+        {
+            if (Category == null)
+                return "Nessuna categoria";
+            return Category.Title;
+
+            // sintetizzata
+            //return Category?.Title ?? "Nessuna categoria";
+        }
     }
 }

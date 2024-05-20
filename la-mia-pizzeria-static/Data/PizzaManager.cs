@@ -32,9 +32,11 @@ namespace la_mia_pizzeria_static.Data
                 db.SaveChanges();
             }
         }
-        public static Pizzas VediPizza(int id)
+        public static Pizzas VediPizza(int id, bool includeReferences = true)
         {
             using PizzasContext db = new PizzasContext();
+            if(includeReferences)
+                return db.Pizzas.Where(p => p.Id == id).Include(p=> p.Category).FirstOrDefault();
             return db.Pizzas.FirstOrDefault(p => p.Id == id);
         }
         public static void InsertPizza(Pizzas pizza)

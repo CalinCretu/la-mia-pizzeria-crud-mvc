@@ -60,7 +60,7 @@ namespace la_mia_pizzeria_static.Controllers
         public IActionResult Update(int id)
         {
 
-            var pizzaToEdit = PizzaManager.VediPizza(id);
+            var pizzaToEdit = PizzaManager.VediPizza(id, true);
 
             if (pizzaToEdit == null)
             {
