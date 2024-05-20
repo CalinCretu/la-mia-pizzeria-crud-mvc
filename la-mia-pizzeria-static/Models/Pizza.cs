@@ -25,6 +25,9 @@ namespace la_mia_pizzeria_static.Models
         [Range(0.01, double.MaxValue, ErrorMessage = "Il prezzo deve essere maggiore di zero")]
         public double Price { get; set; }
 
+        public int? CategoryId { get; set; }
+        public Category? Category { get; set; }
+
         public Pizzas(string name, string description, string immage, double price)
         {
             Name = name;
