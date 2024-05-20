@@ -43,7 +43,7 @@ namespace la_mia_pizzeria_static.Data
             db.Pizzas.Add(pizza);
             db.SaveChanges();
         }
-        public static bool UpdatePizza(int id, string name, string description, double price)
+        public static bool UpdatePizza(int id, string name, string description, double price, int? categoryId)
         {
             using PizzasContext db = new PizzasContext();
             var pizza = db.Pizzas.FirstOrDefault(p => p.Id == id);
@@ -54,6 +54,7 @@ namespace la_mia_pizzeria_static.Data
             pizza.Name = name;
             pizza.Description = description;
             pizza.Price = price;
+            pizza.CategoryId = categoryId;
 
             db.SaveChanges();
 
