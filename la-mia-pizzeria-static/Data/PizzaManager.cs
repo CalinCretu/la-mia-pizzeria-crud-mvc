@@ -44,7 +44,7 @@ namespace la_mia_pizzeria_static.Data
         {
             using PizzasContext db = new PizzasContext();
             if (includeReferences)
-                return db.Pizzas.Where(p => p.Id == id).Include(p => p.Category).FirstOrDefault();
+                return db.Pizzas.Where(p => p.Id == id).Include(p => p.Category).Include(p => p.Ingredients).FirstOrDefault();
             return db.Pizzas.FirstOrDefault(p => p.Id == id);
         }
 

@@ -20,7 +20,13 @@
                         <img src="~/img/NoPizza.jpeg" class="img-fluid show-pizza-image" alt="Default Image">
                     }
                     <p class="h41">@Model.Price &euro;</p>
-                    <p>Categoria: @($"{Model.GetDisplayedCategory()}")</p>
+                    <p>Categoria: <br /> @($"{Model.GetDisplayedCategory()}")</p>
+                    <div><p>Ingredienti:</p>
+                    @foreach (var ingredient in Model.Ingredients)
+                        {
+                            @ingredient.Name
+                        }
+                    </div>
                     <a href="@Url.Action("Index", "Pizza")"><button class="show-button">Back</button></a>
                 </div>
             </div>
