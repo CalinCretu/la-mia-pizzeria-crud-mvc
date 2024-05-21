@@ -3,6 +3,7 @@ using la_mia_pizzeria_static.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Pizzas = la_mia_pizzeria_static.Models.Pizzas;
 
 namespace la_mia_pizzeria_static.Controllers
@@ -40,6 +41,7 @@ namespace la_mia_pizzeria_static.Controllers
             PizzasFormModel model = new PizzasFormModel();
             model.Pizzas = new Pizzas();
             model.Categories = PizzaManager.GetAllCategories();
+            model.CreateIngredients();
             return View(model);
         }
 
@@ -49,10 +51,14 @@ namespace la_mia_pizzeria_static.Controllers
         {
             if (!ModelState.IsValid)
             {
+                data.Categories = PizzaManager.GetAllCategories();
+                data.CreateIngredients();
+
                 return View("Create", data);
             }
 
-            PizzaManager.InsertPizza(data.Pizzas);
+            PizzaManager.InsertPizza(data.Pizzas, data.SelectedIngredients);
+
             return RedirectToAction("Index");
         }
 

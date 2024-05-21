@@ -1,6 +1,7 @@
 ﻿using la_mia_pizzeria_static.Migrations;
 using la_mia_pizzeria_static.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 namespace la_mia_pizzeria_static.Data
 
@@ -24,6 +25,13 @@ namespace la_mia_pizzeria_static.Data
             using PizzasContext db = new PizzasContext();
             return db.Categories.ToList();
         }
+
+        public static List<Ingredient> GetAllIngredients()
+        {
+            using PizzasContext db = new PizzasContext();
+            return db.Ingredients.ToList();
+        }
+
         public static void ResetTable()
         {
             using (var db = new PizzasContext())
@@ -35,16 +43,34 @@ namespace la_mia_pizzeria_static.Data
         public static Pizzas VediPizza(int id, bool includeReferences = true)
         {
             using PizzasContext db = new PizzasContext();
-            if(includeReferences)
-                return db.Pizzas.Where(p => p.Id == id).Include(p=> p.Category).FirstOrDefault();
+            if (includeReferences)
+                return db.Pizzas.Where(p => p.Id == id).Include(p => p.Category).FirstOrDefault();
             return db.Pizzas.FirstOrDefault(p => p.Id == id);
         }
-        public static void InsertPizza(Pizzas pizza)
+
+        public static Ingredient GetIngredientById(int id)
         {
             using PizzasContext db = new PizzasContext();
+            return db.Ingredients.FirstOrDefault(i => i.Id == id);
+        }
+
+        public static void InsertPizza(Pizzas pizza, List<string> SelectedIngredients = null)
+        {
+            using PizzasContext db = new PizzasContext();
+            if (SelectedIngredients != null)
+            {
+                pizza.Ingredients = new List<Ingredient>();
+                foreach (var ingredientId in SelectedIngredients)
+                {
+                    int id = int.Parse(ingredientId);
+                    var ingredient = db.Ingredients.FirstOrDefault(t => t.Id == id);
+                    pizza.Ingredients.Add(ingredient);
+                }
+            }
             db.Pizzas.Add(pizza);
             db.SaveChanges();
         }
+
         public static bool UpdatePizza(int id, string name, string description, double price, int? categoryId)
         {
             using PizzasContext db = new PizzasContext();
@@ -80,8 +106,8 @@ namespace la_mia_pizzeria_static.Data
         {
             if (PizzaManager.CountDbPizzas() == 0)
             {
-                PizzaManager.InsertPizza(new Pizzas("Quattro Stagioni", "Pomodoro, fiordilatte, funghi, prosciutto cotto, carciofi e olive nere", "~/img/quattro-stagioni.jpeg", 7)); 
-                PizzaManager.InsertPizza(new Pizzas("Capricciosa", "Pomodoro, fiordilatte, funghi, prosciutto cotto, carciofi e olive", "~/img/capricciosa.jpg", 7));   
+                PizzaManager.InsertPizza(new Pizzas("Quattro Stagioni", "Pomodoro, fiordilatte, funghi, prosciutto cotto, carciofi e olive nere", "~/img/quattro-stagioni.jpeg", 7));
+                PizzaManager.InsertPizza(new Pizzas("Capricciosa", "Pomodoro, fiordilatte, funghi, prosciutto cotto, carciofi e olive", "~/img/capricciosa.jpg", 7));
                 PizzaManager.InsertPizza(new Pizzas("Margherita D.O.P.", "Pomodoro San Marzano D.O.P., mozzarella di bufala campana D.O.P. e basilico fresco", "~/img/margherita.jpg", 8));
                 PizzaManager.InsertPizza(new Pizzas("Ortolana", "Pomodoro, fiordilatte, melanzane, zucchine, peperoni e cipolla", "~/img/ortolana.jpeg", 6.5));
                 PizzaManager.InsertPizza(new Pizzas("Tonno e Cipolla", "Pomodoro, fiordilatte, tonno e cipolla", "~/img/tonno-cipolla.jpeg", 6));
