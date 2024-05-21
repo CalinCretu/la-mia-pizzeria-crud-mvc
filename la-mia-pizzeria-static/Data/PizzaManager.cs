@@ -1,5 +1,6 @@
 ﻿using la_mia_pizzeria_static.Migrations;
 using la_mia_pizzeria_static.Models;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Hosting;
 
@@ -71,10 +72,10 @@ namespace la_mia_pizzeria_static.Data
             db.SaveChanges();
         }
 
-        public static bool UpdatePizza(int id, string name, string description, double price, int? categoryId)
+        public static bool UpdatePizza(int id, string name, string description, double price, int? categoryId, List<string> ingredients)
         {
             using PizzasContext db = new PizzasContext();
-            var pizza = db.Pizzas.FirstOrDefault(p => p.Id == id);
+            var pizza = db.Pizzas.Where(x => x.Id == id).Include(x => x.Ingredients).FirstOrDefault();
 
             if (pizza == null)
                 return false;
@@ -83,6 +84,17 @@ namespace la_mia_pizzeria_static.Data
             pizza.Description = description;
             pizza.Price = price;
             pizza.CategoryId = categoryId;
+
+            pizza.Ingredients.Clear();
+            if( ingredients != null )
+            {
+                foreach( var ingredient in ingredients)
+                {
+                    int ingredientId = int.Parse(ingredient);
+                    var ingredientFromDb = db.Ingredients.FirstOrDefault(x => x.Id == ingredientId);
+                    pizza.Ingredients.Add(ingredientFromDb);
+                }
+            }
 
             db.SaveChanges();
 
