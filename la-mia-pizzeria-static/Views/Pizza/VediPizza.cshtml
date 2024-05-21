@@ -21,11 +21,14 @@
                     }
                     <p class="h41">@Model.Price &euro;</p>
                     <p>Categoria: <br /> @($"{Model.GetDisplayedCategory()}")</p>
-                    <div><p>Ingredienti:</p>
-                    @foreach (var ingredient in Model.Ingredients)
-                        {
-                            @ingredient.Name
-                        }
+                    <div>
+                        <p>Ingredienti:</p>
+                        <div class="d-flex gap-2">
+                            @foreach (var ingredient in Model.Ingredients)
+                            {
+                                <div>@ingredient.Name</div>
+                            }
+                        </div>
                     </div>
                     <a href="@Url.Action("Index", "Pizza")"><button class="show-button">Back</button></a>
                 </div>
