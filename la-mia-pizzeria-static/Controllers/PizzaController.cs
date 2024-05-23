@@ -5,6 +5,7 @@ using Microsoft.Extensions.Hosting;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Pizzas = la_mia_pizzeria_static.Models.Pizzas;
+using Microsoft.AspNetCore.Authorization;
 
 namespace la_mia_pizzeria_static.Controllers
 {
@@ -47,6 +48,7 @@ namespace la_mia_pizzeria_static.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Create(PizzasFormModel data)
         {
             if (!ModelState.IsValid)
@@ -84,6 +86,7 @@ namespace la_mia_pizzeria_static.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Update(int id, PizzasFormModel data)
         {
             if (!ModelState.IsValid)
@@ -101,6 +104,7 @@ namespace la_mia_pizzeria_static.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public IActionResult Delete(int id)
         {
             if (PizzaManager.DeletePizza(id))

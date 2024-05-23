@@ -3,7 +3,9 @@
 
 <link rel="stylesheet" href="~/css/Create.css" asp-append-version="true" />
 
-<div class="main">
+@if (User.IsInRole("Admin"))
+{
+    <div class="main">
     <div class="container d-flex justify-content-center align-items-start min-vh-100 mt-5">
         <form asp-controller="Pizza" asp-action="Create" method="post" class="form-pizza bg-dark text-white p-4 rounded">
             @Html.AntiForgeryToken()
@@ -65,4 +67,13 @@
             </div>
         </form>
     </div>
-</div>
+    </div>
+
+}
+else
+{
+    <div class="text-center text-white my-5 py-5">
+        <h1>Only Admins are authorized</h1>
+    </div>
+    
+}
